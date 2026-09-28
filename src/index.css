@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@400;600;700;800;900&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-geologica: "Geologica", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f5f4fa;
+  color: #1c1c1e; /* Classic iOS dark gray text */
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Onboarding scope isolation: initial screens NEVER change with theme */
+html.onboarding-scope,
+html.onboarding-scope body,
+html.onboarding-scope * {
+  color-scheme: light !important;
+}
+
+/* 1. Main Background: Pure black everywhere (#000000) */
+html.dark:not(.onboarding-scope) body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+html.dark:not(.onboarding-scope) .bg-\[\#f5f4fa\],
+html.dark:not(.onboarding-scope) .bg-\[\#F8F9FA\],
+html.dark:not(.onboarding-scope) .bg-\[\#f4f5f7\],
+html.dark:not(.onboarding-scope) .app-canvas {
+  background-color: #000000 !important;
+}
+
+/* 2. Plaques (Cards / Containers) Gradient: 1C1C1E(Снизу) - 202022(сверху) WITHOUT ANY BORDERS */
+.plaque-gradient {
+  background: linear-gradient(180deg, #202022 0%, #1C1C1E 100%) !important;
+}
+
+html.dark:not(.onboarding-scope) .plaque-gradient,
+html.dark:not(.onboarding-scope) [data-plaque="true"],
+html.dark:not(.onboarding-scope) .card-plaque,
+html.dark:not(.onboarding-scope) div.bg-white:not(.keep-white):not([data-colored-bg="true"] *):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.bg-red-500 *):not(.bg-green-500 *):not(.bg-blue-600 *):not(.bg-zinc-950 *):not(.bg-black *):not(button):not(input) {
+  background: linear-gradient(180deg, #202022 0%, #1C1C1E 100%) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Убираем обводку из темной темы как запрошено ("убрать обводку из темной темы") */
+html.dark:not(.onboarding-scope) .border:not(.keep-border),
+html.dark:not(.onboarding-scope) .border-2:not(.keep-border),
+html.dark:not(.onboarding-scope) .border-t:not(.keep-border),
+html.dark:not(.onboarding-scope) .border-b:not(.keep-border),
+html.dark:not(.onboarding-scope) .border-l:not(.keep-border),
+html.dark:not(.onboarding-scope) .border-r:not(.keep-border),
+html.dark:not(.onboarding-scope) .border-black\/\[0\.02\],
+html.dark:not(.onboarding-scope) .border-black\/\[0\.03\],
+html.dark:not(.onboarding-scope) .border-black\/\[0\.04\],
+html.dark:not(.onboarding-scope) .border-black\/\[0\.06\],
+html.dark:not(.onboarding-scope) .border-white\/10,
+html.dark:not(.onboarding-scope) .border-white\/20,
+html.dark:not(.onboarding-scope) .border-white\/\[0\.08\],
+html.dark:not(.onboarding-scope) .border-zinc-300,
+html.dark:not(.onboarding-scope) .border-zinc-200,
+html.dark:not(.onboarding-scope) .border-zinc-150,
+html.dark:not(.onboarding-scope) .border-zinc-100 {
+  border-color: transparent !important;
+}
+
+/* 3. Dark theme transformations: Black becomes white, white becomes black (preserving elements on colored backgrounds) */
+
+/* Buttons that were black in light theme become white with black text in dark theme */
+html.dark:not(.onboarding-scope) button.bg-black:not(.keep-black-bg):not([data-nav="true"]),
+html.dark:not(.onboarding-scope) button.bg-\[\#1c1c1e\]:not(.keep-black-bg),
+html.dark:not(.onboarding-scope) button.bg-\[\#1C1C1E\]:not(.keep-black-bg),
+html.dark:not(.onboarding-scope) .action-primary-btn {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+}
+
+html.dark:not(.onboarding-scope) button.bg-black:not(.keep-black-bg):not([data-nav="true"]) *,
+html.dark:not(.onboarding-scope) button.bg-\[\#1c1c1e\]:not(.keep-black-bg) *,
+html.dark:not(.onboarding-scope) button.bg-\[\#1C1C1E\]:not(.keep-black-bg) * {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* Elements that must remain WHITE on dark/black background */
+.keep-white,
+html.dark:not(.onboarding-scope) .keep-white,
+html.dark:not(.onboarding-scope) .dark\:bg-white,
+html.dark:not(.onboarding-scope) [data-keep-white="true"] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #000000 !important;
+}
+
+/* Text and icons on white elements remain black */
+.keep-white *,
+.keep-black,
+html.dark:not(.onboarding-scope) .keep-white *,
+html.dark:not(.onboarding-scope) .keep-black {
+  color: #000000 !important;
+  stroke: #000000 !important;
+  fill: #000000 !important;
+}
+
+/* Explicitly preserve crisp white text on colored accent buttons */
+.keep-text-white,
+.keep-text-white *,
+button.bg-\[\#006AFF\] *,
+.bg-\[\#006AFF\] *,
+html.dark:not(.onboarding-scope) .keep-text-white,
+html.dark:not(.onboarding-scope) .keep-text-white *,
+html.dark:not(.onboarding-scope) button.bg-\[\#006AFF\] *,
+html.dark:not(.onboarding-scope) .bg-\[\#006AFF\] * {
+  color: #ffffff !important;
+}
+
+/* Paywall screen close button: always pure black */
+#close-paywall-screen-btn svg,
+html.dark:not(.onboarding-scope) #close-paywall-screen-btn svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* Paywall screen step 2: pure black title except highlighted accent */
+.paywall-step2-title,
+.paywall-title-black,
+.paywall-screen-scope .paywall-title-black,
+html.dark .paywall-step2-title,
+html.dark .paywall-title-black,
+html.dark .paywall-screen-scope .paywall-title-black,
+html.dark:not(.onboarding-scope) .paywall-step2-title,
+html.dark:not(.onboarding-scope) .paywall-title-black {
+  color: #000000 !important;
+}
+
+.keep-accent-blue,
+.keep-accent-blue *,
+.paywall-screen-scope .keep-accent-blue,
+.paywall-screen-scope .keep-accent-blue *,
+html.dark .keep-accent-blue,
+html.dark .keep-accent-blue *,
+html.dark:not(.onboarding-scope) .keep-accent-blue,
+html.dark:not(.onboarding-scope) .keep-accent-blue * {
+  color: #006AFF !important;
+}
+
+/* Paywall pure black animated bell */
+.paywall-bell-icon,
+.paywall-bell-icon path,
+html.dark:not(.onboarding-scope) .paywall-bell-icon,
+html.dark:not(.onboarding-scope) .paywall-bell-icon path {
+  fill: #000000 !important;
+  stroke: #000000 !important;
+  color: #000000 !important;
+}
+
+/* Paywall Step 3 Plan Card (#F6F7F9 body, black border, black top banner with white text) */
+.paywall-plan-card,
+html.dark .paywall-plan-card,
+html.dark:not(.onboarding-scope) .paywall-plan-card {
+  background-color: #F6F7F9 !important;
+  border-color: #000000 !important;
+}
+.paywall-plan-card .card-banner,
+html.dark .paywall-plan-card .card-banner,
+html.dark:not(.onboarding-scope) .paywall-plan-card .card-banner {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.paywall-plan-card .card-banner span,
+html.dark .paywall-plan-card .card-banner span,
+html.dark:not(.onboarding-scope) .paywall-plan-card .card-banner span {
+  color: #ffffff !important;
+}
+.paywall-plan-card .card-text-black,
+html.dark .paywall-plan-card .card-text-black,
+html.dark:not(.onboarding-scope) .paywall-plan-card .card-text-black {
+  color: #000000 !important;
+}
+
+/* Paywall titles and scale stage headings: always pure black */
+.paywall-screen-scope .keep-black,
+.paywall-screen-scope .paywall-title-black,
+.paywall-screen-scope h1:not(.keep-accent-blue),
+.paywall-screen-scope h2:not(.keep-accent-blue),
+.paywall-screen-scope h3,
+html.dark .paywall-screen-scope .keep-black,
+html.dark .paywall-screen-scope .paywall-title-black,
+html.dark .paywall-screen-scope h1:not(.keep-accent-blue),
+html.dark .paywall-screen-scope h2:not(.keep-accent-blue),
+html.dark .paywall-screen-scope h3,
+html.dark:not(.onboarding-scope) .paywall-screen-scope .keep-black,
+html.dark:not(.onboarding-scope) .paywall-screen-scope .paywall-title-black,
+html.dark:not(.onboarding-scope) .paywall-screen-scope h1:not(.keep-accent-blue),
+html.dark:not(.onboarding-scope) .paywall-screen-scope h2:not(.keep-accent-blue),
+html.dark:not(.onboarding-scope) .paywall-screen-scope h3 {
+  color: #000000 !important;
+}
+
+/* Text and headings on dark background are white */
+html.dark:not(.onboarding-scope) .text-\[\#1c1c1e\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) .text-\[\#1C1C1E\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) .text-\[\#18181b\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) .text-zinc-900:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) .text-zinc-800:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) .text-zinc-700:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) .text-\[\#374151\]:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-black:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) .text-\[\#f5f5f7\]:not(.keep-black):not(.keep-white *) {
+  color: #ffffff !important;
+}
+
+/* Secondary text, descriptions, captions in dark mode - muted gray (#98989D) */
+html.dark:not(.onboarding-scope) .text-\[\#8E8E93\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#8e8e93\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#6e6e78\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#636366\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#6b7280\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#7C7C80\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#98989D\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#98989d\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#C7C7CC\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#8e98a4\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-\[\#4b5563\]:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-zinc-600:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-zinc-500:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-zinc-400:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-zinc-300:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-gray-500:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) .text-gray-400:not(.keep-black):not(.bg-\[\#183BA7\] *):not(.bg-\[\#006AFF\] *):not(.bg-\[\#007AFF\] *):not(.keep-white *):not(.dark\:bg-white *) {
+  color: #98989D !important;
+}
+
+/* Main element icons - white */
+html.dark:not(.onboarding-scope) svg.text-black:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) svg.text-zinc-900:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) svg.text-zinc-800:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) svg.text-\[\#1c1c1e\]:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *),
+html.dark:not(.onboarding-scope) svg.text-\[\#1C1C1E\]:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *):not(button.bg-black *):not(button.bg-\[\#1c1c1e\] *):not(button.bg-\[\#1C1C1E\] *) {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Secondary icons / chevrons / badges - soft gray (#98989D) */
+html.dark:not(.onboarding-scope) svg.text-zinc-700:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) svg.text-zinc-600:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) svg.text-zinc-500:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) svg.text-zinc-400:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) svg.text-\[\#8E8E93\]:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) svg.text-\[\#8e8e93\]:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) svg.text-\[\#7C7C80\]:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) svg.text-\[\#98989D\]:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) svg.text-\[\#C7C7CC\]:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *),
+html.dark:not(.onboarding-scope) svg.text-\[\#6e6e78\]:not(.keep-black):not(.keep-white *):not(.dark\:bg-white *) {
+  color: #98989D !important;
+  stroke: #98989D !important;
+}
+
+/* Inner plaques/inputs in dark theme without borders */
+html.dark:not(.onboarding-scope) .bg-zinc-50:not(.keep-bg),
+html.dark:not(.onboarding-scope) .bg-zinc-100:not(.keep-bg),
+html.dark:not(.onboarding-scope) .bg-\[\#f4f5f7\]:not(.keep-bg),
+html.dark:not(.onboarding-scope) .bg-\[\#F2F2F7\]:not(.keep-bg),
+html.dark:not(.onboarding-scope) .bg-\[\#eaedf0\]:not(.keep-bg),
+html.dark:not(.onboarding-scope) .bg-\[\#e5e5eb\]:not(.keep-bg) {
+  background-color: #19191B !important;
+  border-color: transparent !important;
+}
+
+/* Circular charts: clean gray track */
+.chart-track-ring {
+  stroke: #E5E5EA !important;
+}
+html.dark:not(.onboarding-scope) .chart-track-ring {
+  stroke: #3A3A3C !important;
+}
+
+/* Gray dots for empty days in progress & calendar */
+html.dark:not(.onboarding-scope) .bg-\[\#E5E5EA\],
+html.dark:not(.onboarding-scope) .bg-\[\#e5e5eb\] {
+  background-color: #2C2C2E !important;
+  border-color: transparent !important;
+}
+
+/* Smooth custom scrollbars for interactive panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d1d6;
+  border-radius: 9999px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #3a3a3c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c7c7cc;
+}
+

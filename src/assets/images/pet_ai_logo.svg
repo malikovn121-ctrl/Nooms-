@@ -1,0 +1,29 @@
+<svg viewBox="0 0 325 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Paw Print (Canine / Feline Style) -->
+  <g fill="black">
+    <!-- Outer Left Toe -->
+    <ellipse cx="23" cy="54" rx="8" ry="12" transform="rotate(-30 23 54)" />
+    <!-- Mid Left Toe -->
+    <ellipse cx="40" cy="30" rx="9.5" ry="14.5" transform="rotate(-10 40 30)" />
+    <!-- Mid Right Toe -->
+    <ellipse cx="60" cy="30" rx="9.5" ry="14.5" transform="rotate(10 60 30)" />
+    <!-- Outer Right Toe -->
+    <ellipse cx="77" cy="54" rx="8" ry="12" transform="rotate(30 77 54)" />
+    <!-- Main Pad -->
+    <path d="M 32,58 C 18,58 12,68 12,77 C 12,88 20,93 40,93 C 60,93 70,88 70,77 C 70,68 66,58 55,58 C 47,58 40,63 40,63 C 40,63 33,58 32,58 Z" />
+  </g>
+
+  <!-- "Pet AI" Bold Geometric Text (Indivisible Style) -->
+  <g fill="black">
+    <!-- P -->
+    <path d="M 95,28 H 124 C 135,28 141,34 141,45 C 141,56 135,62 124,62 H 108 V 72 H 95 Z M 108,40 V 50 H 123 C 127,50 129,48 129,45 C 129,42 127,40 123,40 Z" />
+    <!-- e -->
+    <path d="M 174,40 C 158,40 146,47 146,61 C 146,75 158,82 174,82 C 187,82 196,76 198,66 H 185 C 184,70 180,73 174,73 C 167,73 161,69 161,62 H 199 V 60 C 199,47 189,40 174,40 Z M 161,53 C 162,48 166,45 174,45 C 181,45 185,48 186,53 Z" />
+    <!-- t -->
+    <path d="M 216,32 V 42 H 204 V 52 H 216 V 67 C 216,71 219,73 224,73 C 228,73 231,72 232,71 V 61 C 231,61 230,61 228,61 C 226,61 226,60 226,58 V 52 H 235 V 42 H 226 V 32 Z" />
+    <!-- A -->
+    <path d="M 264,28 H 271 L 292,72 H 279 L 275,61 H 260 L 256,72 H 243 Z M 263,51 H 272 L 267.5,38 Z" />
+    <!-- I -->
+    <path d="M 299,28 H 312 V 72 H 299 Z" />
+  </g>
+</svg>

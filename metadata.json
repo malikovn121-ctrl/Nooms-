@@ -1,0 +1,6 @@
+{
+  "name": "PetHealth Tracker AI",
+  "description": "iOS-style pet health tracker featuring AI photo scanner analysis, water intake logger, medicine tracker, reminders, and activity ring.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
